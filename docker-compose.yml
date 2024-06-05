@@ -1,0 +1,32 @@
+# Define a version
+version: "3"
+# Define a service you want to run
+services:
+  backend:
+    build: devops0anas/flaskapplication:latest
+    #  context: . # This is not mendetory if you already build just put a dockerhub file
+    ports:
+      - "5000:5000"
+    environment: # set Enviorment Variable
+      MYSQL_HOST: mysql
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+      MYSQL_DB: myDb
+    depends_on: # upper code depends on sql
+      - mysql
+
+  mysql:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: myDb
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+    volumes:
+      - ./message.sql:/docker-entrypoint-initdb.d/message.sql # Mount sql script into container's /docker-entrypoint-initdb.d directory to get table automatically created
+      - mysql-data:/var/lib/mysql # Mount the volume for MySQL data storage
+
+volumes: # assign a volume
+  mysql-data:
