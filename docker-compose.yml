@@ -3,8 +3,9 @@ version: "3"
 # Define a service you want to run
 services:
   backend:
-    build: devops0anas/flaskapplication:latest
+    # build: devops0anas/flaskapplication:latest
     #  context: . # This is not mendetory if you already build just put a dockerhub file
+    image: devops0anas/flaskapplication:latest
     ports:
       - "5000:5000"
     environment: # set Enviorment Variable
@@ -16,7 +17,7 @@ services:
       - mysql
 
   mysql:
-    image: mysql:5.7
+    image: devops0anas/flaskapplication:mysql
     ports:
       - "3306:3306"
     environment:
