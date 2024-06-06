@@ -11,7 +11,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/* 
 # Remove a app list
 # COPY a requirment file
-COPY requirements.txt
+COPY requirements.txt .
 
 # Run all commands inside container ( For Run Application )
 # 1. install mysql client
