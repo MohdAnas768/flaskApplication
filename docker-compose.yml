@@ -5,11 +5,11 @@ services:
   backend:
     # build: devops0anas/flaskapplication:latest
     #  context: . # This is not mendetory if you already build just put a dockerhub file
-    image: devops0anas/flaskapplication:latest
+    image: devops0anas/flaskapplication:app
     ports:
       - "5000:5000"
     environment: # set Enviorment Variable
-      MYSQL_HOST: mysql
+      MYSQL_HOST: admin
       MYSQL_USER: admin
       MYSQL_PASSWORD: admin
       MYSQL_DB: myDb
@@ -17,12 +17,12 @@ services:
       - mysql
 
   mysql:
-    image: devops0anas/flaskapplication:mysql
+    image: devops0anas/flaskapplication:sql
     ports:
       - "3306:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: myDb
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: mydb
       MYSQL_USER: admin
       MYSQL_PASSWORD: admin
     volumes:
