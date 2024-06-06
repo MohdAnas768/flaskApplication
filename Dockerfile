@@ -20,6 +20,6 @@ RUN pip install mysqlclient
 RUN pip install -r requirements.txt
 
 # copy a file source to destination first dot is source and second is destination
-COPY ..
+COPY . .
 # RUN a command inside docker container you build using dockerfile
 CMD ["python", "app.py"]
